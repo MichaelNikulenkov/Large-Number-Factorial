@@ -8,7 +8,7 @@ int main() {
 	std::cout << "Enter a number: " << std::endl;
 	std::cin >> value;
 
-	//вычисление факториала
+	//РІС‹С‡РёСЃР»РµРЅРёРµ С„Р°РєС‚РѕСЂРёР°Р»Р°
 	double time_start = omp_get_wtime();
 	LargeNumber result = factorial(value);
 	double time_end = omp_get_wtime();
@@ -18,7 +18,7 @@ int main() {
 	std::string result_str = result.to_str();
 	std::cout << result_str << std::endl;
 
-	//сохранение результата
+	//СЃРѕС…СЂР°РЅРµРЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 	std::ofstream out("result.txt");
 	out << result_str;
 	out.close();
