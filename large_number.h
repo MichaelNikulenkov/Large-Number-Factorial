@@ -4,29 +4,29 @@
 
 typedef unsigned long long uLL;
 
-//способ представления больших чисел
+//СЃРїРѕСЃРѕР± РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ Р±РѕР»СЊС€РёС… С‡РёСЃРµР»
 class LargeNumber {
 public:
 	LargeNumber(uLL value);
 
-	//нумерация в обратном порядке
+	//РЅСѓРјРµСЂР°С†РёСЏ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ
 	uint8_t get_digit(size_t index) const;
 	size_t digits_num() const;
 
-	//общая разрядность числа - digits_num() + additional_magnitude()
+	//РѕР±С‰Р°СЏ СЂР°Р·СЂСЏРґРЅРѕСЃС‚СЊ С‡РёСЃР»Р° - digits_num() + additional_magnitude()
 	uLL additional_magnitude() const;
 
 	std::string to_str() const;
 	LargeNumber& operator*=(const LargeNumber& number);
-	//параллельная реализация перемножения больших чисел
+	//РїР°СЂР°Р»Р»РµР»СЊРЅР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ РїРµСЂРµРјРЅРѕР¶РµРЅРёСЏ Р±РѕР»СЊС€РёС… С‡РёСЃРµР»
 	void parallel_mult_by(const LargeNumber& number);
 
 private:
-	//добавить к числу с большей разрядностью число с меньшей
-	//результат остается в числе с большей разрядностью
+	//РґРѕР±Р°РІРёС‚СЊ Рє С‡РёСЃР»Сѓ СЃ Р±РѕР»СЊС€РµР№ СЂР°Р·СЂСЏРґРЅРѕСЃС‚СЊСЋ С‡РёСЃР»Рѕ СЃ РјРµРЅСЊС€РµР№
+	//СЂРµР·СѓР»СЊС‚Р°С‚ РѕСЃС‚Р°РµС‚СЃСЏ РІ С‡РёСЃР»Рµ СЃ Р±РѕР»СЊС€РµР№ СЂР°Р·СЂСЏРґРЅРѕСЃС‚СЊСЋ
 	static void add_smaller_to_bigger(const std::vector<uint8_t>& smaller, std::vector<uint8_t>& bigger);
 
 	std::vector<uint8_t> _data = {};
-	//число представлено как reverse(_data) * 10^(_additional_magnitude)
+	//С‡РёСЃР»Рѕ РїСЂРµРґСЃС‚Р°РІР»РµРЅРѕ РєР°Рє reverse(_data) * 10^(_additional_magnitude)
 	uLL _additional_magnitude = 0;
 };
